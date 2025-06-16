@@ -4,6 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { PokeapiService } from '../services/pokeapi.service';
 import { Router } from '@angular/router';
+import { FavoritesService } from '../services/favorites.service';
 
 
 @Component({
@@ -23,10 +24,11 @@ export class PokemonDetailsPage implements OnInit {
   movesText = '';
   previousForm: string | null = null; 
   previousFormData: any = null;
+  isFavorite = false;
   backgroundColor: string = 'white';
 
   
-  constructor(private route: ActivatedRoute, private pokeapi: PokeapiService,private router: Router) {}
+  constructor(private route: ActivatedRoute, private pokeapi: PokeapiService,private router: Router,private favoritesService: FavoritesService) {}
 
   
   ngOnInit() {
@@ -41,8 +43,12 @@ export class PokemonDetailsPage implements OnInit {
 
   
 
+  
+
   loadPokemonDetails() {
     this.loading = true;
+
+    this.isFavorite = this.favoritesService.isFavorite(this.pokemonId);
   
     this.pokeapi.getPokemonDetails(this.pokemonId.toString()).subscribe(data => {
       console.log('Detalhes do Pokémon:', data);
@@ -93,6 +99,11 @@ export class PokemonDetailsPage implements OnInit {
         this.loading = false; 
       }
     });
+  }
+
+  toggleFavorite() {
+    this.favoritesService.toggleFavorite(this.pokemonId);
+    this.isFavorite = this.favoritesService.isFavorite(this.pokemonId);
   }
   
   mapColor(colorName: string): string {

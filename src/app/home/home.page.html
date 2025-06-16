@@ -5,6 +5,9 @@
 </ion-header>
 
 <ion-content>
+  <ion-button expand="full" (click)="openFavorites($event)" style="margin: 10px 0;">
+    Ver Favoritos
+  </ion-button>
   <ion-list>
     <ion-item *ngFor="let pokemon of pokemons" (click)="goToDetails(pokemon.id)">
       <ion-avatar slot="start">
@@ -15,11 +18,17 @@
         <p>ID: {{ pokemon.id }}</p>
       </ion-label>
       <ion-buttons slot="end">
+        <ion-button fill="clear" (click)="toggleFavorite(pokemon.id); $event.stopPropagation()">
+          <ion-icon [name]="pokemon.favorite ? 'heart' : 'heart-outline'" color="danger"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
         <ion-button fill="clear" (click)="goToDetails(pokemon.id); $event.stopPropagation()">
           <ion-icon name="information-circle-outline"></ion-icon>
         </ion-button>
       </ion-buttons>
     </ion-item>
+   
   </ion-list>
   <ion-footer>
     <ion-toolbar>

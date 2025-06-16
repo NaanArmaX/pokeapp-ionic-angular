@@ -6,6 +6,12 @@
     <ion-title>
       {{ pokemonDetails?.name | titlecase }}
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="toggleFavorite()">
+        <ion-icon [name]="isFavorite ? 'heart' : 'heart-outline'" color="danger"></ion-icon>
+        {{ isFavorite ? ' Desfavoritar' : ' Favoritar' }}
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
