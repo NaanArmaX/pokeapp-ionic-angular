@@ -1,6 +1,6 @@
 # PokeApp - Ionic & Angular
 
-Este projeto é um aplicativo móvel construído com Ionic e Angular para exibir informações detalhadas sobre Pokémons utilizando a PokeAPI.
+Este projeto é um aplicativo construído com Ionic e Angular para exibir informações detalhadas sobre Pokémons utilizando a PokeAPI.
 
 ## Abordagem
 
