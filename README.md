@@ -22,5 +22,7 @@ Este projeto é um aplicativo construído com Ionic e Angular para exibir inform
 - Navegação via Router do Angular para fluxo previsível.
 - Uso do padrão Observer para atualizar a interface reativamente conforme os dados chegam.
 
+![Demonstração](./src/assets/media/Pokeapp%20‐%20Feito%20com%20o%20Clipchamp.gif)
+
 ---
 Projeto desenvolvido como HackerRank prático em Angular, Ionic e consumo de APIs REST.
