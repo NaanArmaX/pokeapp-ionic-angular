@@ -1,6 +1,12 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Pokémons</ion-title>
+    <ion-searchbar 
+      [(ngModel)]="searchTerm" 
+      (ionInput)="onSearchChange($event)" 
+      placeholder="Buscar" 
+      class="searchbar-small" 
+      debounce="300">
+    </ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
@@ -8,8 +14,9 @@
   <ion-button expand="full" (click)="openFavorites($event)" class="btn-clean">
     Ver Favoritos
   </ion-button>
+
   <ion-list>
-    <ion-item *ngFor="let pokemon of pokemons" (click)="goToDetails(pokemon.id)">
+    <ion-item *ngFor="let pokemon of filteredPokemons" (click)="goToDetails(pokemon.id)">
       <ion-avatar slot="start">
         <img [src]="pokemon.image" />
       </ion-avatar>
@@ -21,15 +28,13 @@
         <ion-button fill="clear" (click)="toggleFavorite(pokemon.id); $event.stopPropagation()">
           <ion-icon [name]="pokemon.favorite ? 'heart' : 'heart-outline'" color="danger"></ion-icon>
         </ion-button>
-      </ion-buttons>
-      <ion-buttons slot="end">
         <ion-button fill="clear" (click)="goToDetails(pokemon.id); $event.stopPropagation()">
           <ion-icon name="information-circle-outline"></ion-icon>
         </ion-button>
       </ion-buttons>
     </ion-item>
-   
   </ion-list>
+
   <ion-footer>
     <ion-toolbar>
       <ion-buttons slot="start">

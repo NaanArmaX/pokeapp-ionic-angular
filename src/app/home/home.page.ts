@@ -5,6 +5,7 @@ import { PokeapiService } from '../services/pokeapi.service';
 import { Router } from '@angular/router';
 import { FavoritesListComponent } from '../favorites-list/favorites-list.component';
 import { FavoritesService } from '../services/favorites.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +15,7 @@ import { FavoritesService } from '../services/favorites.service';
   imports: [
     CommonModule,
     IonicModule,
+    FormsModule,
     FavoritesListComponent
   ]
 })
@@ -21,6 +23,8 @@ export class HomePage implements OnInit {
   pokemons: any[] = [];
   offset = 0;
   limit = 10;
+  searchTerm: string = ''; 
+  filteredPokemons: any[] = [];
   favorites: Set<number> = new Set();
 
   constructor(private pokeapi: PokeapiService,private router: Router,private popoverCtrl: PopoverController,private favoritesService: FavoritesService) {}
@@ -40,7 +44,20 @@ export class HomePage implements OnInit {
           favorite: this.favoritesService.isFavorite(id)
         };
       });
+      this.filteredPokemons = this.pokemons; 
     });
+  }
+
+  filterPokemons() {
+    const term = this.searchTerm.toLowerCase();
+    this.filteredPokemons = this.pokemons.filter(pokemon =>
+      pokemon.name.toLowerCase().includes(term)
+    );
+  }
+
+  onSearchChange(event: any) {
+    this.searchTerm = event.detail.value;
+    this.filterPokemons();
   }
 
   getIdFromUrl(url: string): number {

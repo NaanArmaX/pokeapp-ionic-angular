@@ -1,6 +1,6 @@
 :host {
     display: block;
-    padding: 16px; /* 16px é um bom espaçamento padrão */
+    padding: 16px;
     box-sizing: border-box;
   }
 
@@ -29,4 +29,32 @@ ion-content::-webkit-scrollbar {
   ion-button.btn-clean:hover {
     background-color: #357ABD !important;
     cursor: pointer;
+  }
+
+
+  
+  .title {
+    flex: 0 0 auto;  
+    margin: 0 auto;
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin: 0 auto;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .searchbar-small {
+    flex: 0 0 auto; 
+    margin: 0 auto;
+    padding: auto;
+    width: 15%;
+    min-width: 120px;
+    --padding-start: 8px;
+    --padding-end: 8px;
+    --background: #f0f0f0;
+    --border-radius: 16px;
+    --placeholder-color: #000000;
+    --icon-color: #000000;
+    --color: #000000;
+    --cancel-button-color: transparent;
   }
