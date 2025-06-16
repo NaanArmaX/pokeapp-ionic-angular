@@ -14,3 +14,19 @@ ion-content::-webkit-scrollbar {
     scrollbar-width: none; 
     -ms-overflow-style: none; 
   }
+
+  ion-button.btn-clean {
+    background-color: #5385be !important;
+    color: white !important;
+    border-radius: 25px !important;
+    margin: 10px 0;
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.4);
+    transition: background-color 0.3s ease;
+  }
+  
+  ion-button.btn-clean:hover {
+    background-color: #357ABD !important;
+    cursor: pointer;
+  }

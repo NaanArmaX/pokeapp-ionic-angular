@@ -52,18 +52,23 @@ export class HomePage implements OnInit {
   }
 
   async openFavorites(ev: any) {
-    const favoritePokemons = this.pokemons.filter(p => this.favoritesService.isFavorite(p.id));
+    
+    const favIds = new Set(this.favoritesService.getFavorites());
+    const favoritosComStatusAtualizado = this.pokemons
+      .filter(pokemon => favIds.has(pokemon.id))
+      .map(pokemon => ({ ...pokemon, favorite: true }));
     const popover = await this.popoverCtrl.create({
       component: FavoritesListComponent,
       event: ev,
       translucent: true,
       componentProps: {
-        favorites: favoritePokemons,
+        favorites: favoritosComStatusAtualizado,
         toggleFavorite: this.toggleFavorite.bind(this)
       }
     });
     await popover.present();
   }
+
 
   toggleFavorite(pokemonId: number) {
     this.favoritesService.toggleFavorite(pokemonId);

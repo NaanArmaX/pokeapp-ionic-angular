@@ -41,9 +41,6 @@ export class PokemonDetailsPage implements OnInit {
     });
   }
 
-  
-
-  
 
   loadPokemonDetails() {
     this.loading = true;
