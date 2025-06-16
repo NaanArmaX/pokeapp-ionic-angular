@@ -1,0 +1,20 @@
+<ion-list *ngIf="favorites.length; else emptyList">
+  <ion-item *ngFor="let pokemon of favorites">
+    <ion-avatar slot="start">
+      <img [src]="pokemon.image" />
+    </ion-avatar>
+    <ion-label>
+      <h2>{{ pokemon.name | titlecase }}</h2>
+      <p>ID: {{ pokemon.id }}</p>
+    </ion-label>
+    <ion-button slot="end" fill="clear" (click)="onToggleFavorite(pokemon.id)">
+      <ion-icon [name]="pokemon.favorite ? 'heart' : 'heart-outline'" color="danger"></ion-icon>
+    </ion-button>
+  </ion-item>
+</ion-list>
+
+<ng-template #emptyList>
+  <ion-item>
+    <ion-label>Nenhum Pokémon favorito</ion-label>
+  </ion-item>
+</ng-template>
