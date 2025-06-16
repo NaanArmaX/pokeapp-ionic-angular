@@ -10,4 +10,8 @@ export const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full',
   },
+  {
+    path: 'pokemon-details/:id',
+    loadComponent: () => import('./pokemon-details/pokemon-details.page').then(m => m.PokemonDetailsPage)
+  },
 ];

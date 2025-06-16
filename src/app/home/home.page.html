@@ -1,20 +1,34 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title>Pokémons</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let pokemon of pokemons" (click)="goToDetails(pokemon.id)">
+      <ion-avatar slot="start">
+        <img [src]="pokemon.image" />
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ pokemon.name | titlecase }}</h2>
+        <p>ID: {{ pokemon.id }}</p>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-button fill="clear" (click)="goToDetails(pokemon.id); $event.stopPropagation()">
+          <ion-icon name="information-circle-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+  <ion-footer>
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-buttons slot="start">
+        <ion-button (click)="prevPage()" [disabled]="offset === 0">Anterior</ion-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button (click)="nextPage()">Próxima</ion-button>
+      </ion-buttons>
     </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  </ion-footer>
 </ion-content>

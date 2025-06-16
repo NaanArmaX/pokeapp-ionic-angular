@@ -1,27 +1,16 @@
-#container {
-  text-align: center;
+:host {
+    display: block;
+    padding: 16px; /* 16px é um bom espaçamento padrão */
+    box-sizing: border-box;
+  }
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
-}
+  
+ion-content::-webkit-scrollbar {
+    display: none;
+  }
+  
+  
+  ion-content {
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+  }
